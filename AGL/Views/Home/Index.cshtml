@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+   <title></title>
+</head>
+<body ng-app="AGLApp">
+ <div ng-controller="peopleOverviewController as vm">
+        <div class="peopleWrapper" ng-if="vm.isDataFetched">
+            <div>
+                <ul>
+                    <li ng-repeat="people in vm.peopleArray| peoplePetCategory : 'male' | orderBy : 'name'">
+                        <label ng-show ="$index===0"> Male </label>
+                        {{people.name}}
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li ng-repeat="people in vm.peopleArray| peoplePetCategory : 'female' | orderBy : 'name'">
+                        <label ng-show ="$index===0"> Female </label> 
+                        {{people.name}}
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
